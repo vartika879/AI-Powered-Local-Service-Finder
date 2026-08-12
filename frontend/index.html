@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>LocAI Finder | Smart Local Services in Lucknow</title>
+  <!-- Tailwind CSS + Google Fonts + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="bg-white/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+          <i class="fas fa-robot text-white text-lg"></i>
+        </div>
+        <span class="font-bold text-2xl tracking-tight bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">LocAI<span class="text-blue-600">Finder</span></span>
+        <span class="hidden md:inline-flex text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-600 ml-2">Lucknow AI</span>
+      </div>
+      <div class="text-sm text-gray-500 hidden sm:flex items-center gap-2">
+        <i class="fas fa-map-marker-alt text-blue-500"></i>
+        <span>Serving Lucknow & surrounding</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-6 text-center md:text-left md:flex md:justify-between md:items-center gap-6">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-800">Find local pros <span class="text-blue-600">instantly</span> <br> with <span class="underline decoration-blue-400">AI power</span></h1>
+      <p class="text-gray-500 text-lg mt-4 max-w-xl">Restaurants, electricians, plumbers, tutors & mechanics — all in one place. Real database + AI fallback.</p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="bg-gray-100 text-gray-700 px-4 py-1.5 rounded-full text-sm"><i class="fas fa-database mr-1"></i> MongoDB</span>
+        <span class="bg-gray-100 text-gray-700 px-4 py-1.5 rounded-full text-sm"><i class="fas fa-microchip mr-1"></i> Groq AI</span>
+        <span class="bg-gray-100 text-gray-700 px-4 py-1.5 rounded-full text-sm"><i class="fas fa-globe mr-1"></i> Serper API</span>
+      </div>
+    </div>
+    <div class="mt-8 md:mt-0">
+      <i class="fas fa-magnifying-glass-chart text-7xl text-blue-200"></i>
+    </div>
+  </section>
+
+  <!-- SEARCH CARD -->
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 mt-4">
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 md:p-6">
+      <label class="block text-sm font-semibold text-gray-700 mb-2"><i class="fas fa-search text-blue-500 mr-1"></i> What are you looking for?</label>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex-1 relative">
+          <i class="fas fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="searchInput" placeholder="e.g., best restaurant in Lucknow, electrician near me, plumber hazratganj" class="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition">
+        </div>
+        <button id="searchBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-8 py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2"><i class="fas fa-arrow-right"></i> Search</button>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs text-gray-500">🔥 trending:</span>
+        <button data-quick="restaurant" class="quick-btn text-xs bg-gray-100 hover:bg-blue-100 px-3 py-1.5 rounded-full transition">🍽️ Restaurant</button>
+        <button data-quick="electrician" class="quick-btn text-xs bg-gray-100 hover:bg-blue-100 px-3 py-1.5 rounded-full transition">⚡ Electrician</button>
+        <button data-quick="plumber" class="quick-btn text-xs bg-gray-100 hover:bg-blue-100 px-3 py-1.5 rounded-full transition">🔧 Plumber</button>
+        <button data-quick="tutor" class="quick-btn text-xs bg-gray-100 hover:bg-blue-100 px-3 py-1.5 rounded-full transition">📚 Tutor</button>
+        <button data-quick="mechanic" class="quick-btn text-xs bg-gray-100 hover:bg-blue-100 px-3 py-1.5 rounded-full transition">🚗 Mechanic</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS & HISTORY LAYOUT: 2 columns on large -->
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- LEFT: RESULTS AREA -->
+    <div class="lg:col-span-2">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-gray-800"><i class="fas fa-list-check text-blue-500 mr-2"></i> Search Results</h2>
+        <div id="resultBadge" class="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600"></div>
+      </div>
+      <div id="resultsContainer" class="space-y-4 min-h-[280px]">
+        <div class="bg-white rounded-xl border border-gray-200 p-8 text-center text-gray-400">
+          <i class="fas fa-lightbulb text-4xl mb-2 block"></i>
+          <p>Enter a search term above. AI-powered discovery for Lucknow services.</p>
+        </div>
+      </div>
+      <!-- AI suggestion note appears dynamically -->
+      <div id="aiNote" class="mt-4 text-sm hidden"></div>
+    </div>
+
+    <!-- RIGHT: HISTORY SIDEBAR -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-md p-5 h-fit">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-gray-700"><i class="fas fa-clock mr-2 text-indigo-400"></i> Recent Searches</h3>
+        <button id="clearHistoryBtn" class="text-xs text-red-400 hover:text-red-600 transition"><i class="fas fa-trash-alt mr-1"></i>Clear</button>
+      </div>
+      <div id="historyList" class="space-y-2 max-h-[400px] overflow-y-auto">
+        <div class="text-gray-400 text-sm italic text-center py-4">No history yet. Start searching!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADING SPINNER (global hidden) -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 hidden transition">
+    <div class="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3">
+      <div class="spinner"></div>
+      <p class="text-gray-600 font-medium">Searching local services & AI...</p>
+    </div>
+  </div>
+
+  <footer class="text-center text-gray-400 text-sm py-8 border-t mt-6">
+    <i class="fas fa-brain text-blue-300 mr-1"></i> AI-powered suggestions if not found in local DB | Real Lucknow data
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
